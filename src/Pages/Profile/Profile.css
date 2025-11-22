@@ -1,0 +1,9 @@
+.profile-page {
+  padding: 20px;
+}
+
+.profile-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}

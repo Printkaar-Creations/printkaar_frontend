@@ -1,0 +1,134 @@
+.navbar {
+  width: 100%;
+  background-color: transparent;
+  color: black;
+}
+.navbar-main {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.nav-name h5 {
+  font-size: 20px;
+  color: white;
+  margin: 0;
+}
+.nav-name span {
+  font-size: 14px;
+  color: #ffffffc7;
+  margin: 0;
+}
+
+/* .navbar-main img {
+  width: 100%;
+  max-height: 60px;
+  object-fit: contain;
+} */
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show > .nav-link {
+  color: #d8fff1 !important;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #d8fff1 !important;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile svg {
+  font-size: 25px;
+  color: #d8fff1;
+  width: 22px;
+}
+.profile .help a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d8fff1;
+  border-radius: 25px;
+  padding: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+.profile .help a p {
+  margin: 0;
+  color: white;
+  padding: 0 5px;
+}
+.profile .help a svg {
+  color: white;
+}
+.profile .btn {
+  box-shadow: none;
+}
+.dropdown-menu[data-bs-popper] {
+  top: 100%;
+  right: 0;
+  left: auto !important;
+  margin-top: 0.125rem;
+  background-color: #ffffff;
+}
+.dropdown-menu[data-bs-popper] a {
+  color: black;
+}
+.navbar-collapse {
+  justify-content: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+.navbar-brand img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  /* background-color: white; */
+  object-fit: cover;
+}
+
+.navbar-title h5 {
+  line-height: 10px;
+  color: #016B61;
+}
+.navbar-title span {
+  color: #016B61;
+}
+
+@media screen and (min-width: 1200px) {
+  .navbar-main {
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .navbar {
+    width: 100%;
+    padding: 2px 0;
+    /* background-color: transparent; */
+  }
+  /* .navbar-main img {
+    width: 110%;
+    max-height: 80px;
+    object-fit: cover;
+  } */
+  .navbar-brand {
+    width: 60%;
+  }
+  /* .profile {
+    position: absolute;
+    top: 20%;
+    right: 2%;
+  } */
+  .donate-card-box {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+}

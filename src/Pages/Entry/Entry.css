@@ -1,0 +1,84 @@
+.entry-modal-overlay {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  height: 85vh;
+  overflow: auto;
+}
+
+.entry-modal {
+  border-radius: 10px;
+  width: 100%;
+  max-width: 520px;
+  padding: 0 15px 15px 15px;
+}
+
+.entry-modal h3 {
+  margin: 0 0 12px 0;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.flex-box{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+}
+
+select { height: 40px; }
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background: #016B61;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-cancel {
+  background: #f1f1f1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 12px;
+  color: #0a7;
+  font-weight: 600;
+}
+
+.muted {
+  color: #666;
+  font-size: 12px;
+}
