@@ -113,3 +113,21 @@
   padding: 5px 10px;
   color: white;
 }
+
+.review-status {
+  font-size: 12px;
+}
+.review-status.green {
+  color: green;
+}
+.review-status.red {
+  color: red;
+}
+
+.entry-card.purchase {
+  background-color: rgba(255, 0, 0, 0.198);
+}
+
+.entry-card.restMoney {
+  background-color: rgba(64, 255, 0, 0.198);
+}

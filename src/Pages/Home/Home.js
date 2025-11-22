@@ -3,6 +3,8 @@ import "./Home.css";
 import Card from "../../Components/Card/Card";
 import NoteContext from "../../Context/AppContext";
 import { useNavigate } from "react-router-dom";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import HomeCard from "../../Components/Card/HomeCard";
 
 const Home = () => {
     const { entries, getAllEntries, allState, getAllState } =
@@ -27,6 +29,95 @@ const Home = () => {
         (e) => e.type === "sell" && e.action === "completed"
     ).length;
 
+    const TotalData = [
+        {
+            id: 1,
+            name: "balance",
+            field: `₹${allState?.totals?.balance}`,
+            icon: "https://lottie.host/fff28f40-a974-4f20-a650-9f8c95194cb1/3e1bYA44nJ.lottie",
+        },
+        {
+            id: 2,
+            name: "Total Sales",
+            field: `₹${allState?.totals?.saleTotal}`,
+            icon: "https://lottie.host/8e5bbb43-3d16-415c-aedd-866310e7576c/u1vV7eQ3TR.lottie",
+        },
+        {
+            id: 3,
+            name: "Total Purchase",
+            field: `₹${allState?.totals?.purchaseTotal}`,
+            icon: "https://lottie.host/329f8239-9b93-4c6b-9f49-3a995966b9ba/4PPSZkIciI.lottie",
+        },
+        {
+            id: 4,
+            name: "Total Expense",
+            field: `₹${allState?.totals?.expenseTotal}`,
+            icon: "https://lottie.host/b0e60cca-b752-4bc8-8fe9-363b5dd54908/Iro82wuXxW.lottie",
+        },
+        {
+            id: 5,
+            name: "Total Profit",
+            field: `₹${allState?.totals?.othersTotal}`,
+            icon: "https://lottie.host/0eead098-07e9-4933-be67-a2e8c4d3153f/gI6pNBqaAL.lottie",
+        },
+        {
+            id: 6,
+            name: "Total Loss",
+            field: `₹${allState?.totals?.profitTotal}`,
+            icon: "https://lottie.host/daa9d2bb-4f9b-492e-87bc-7fbe320851c8/SiP2vbrcX3.lottie",
+        },
+        {
+            id: 7,
+            name: "Processing",
+            field: pending,
+            icon: "https://lottie.host/d6cf7a71-53a0-42ad-83f2-02a04346d722/BWeb6rvunY.lottie",
+        },
+        {
+            id: 8,
+            name: "Completed",
+            field: completed,
+            icon: "https://lottie.host/8b26f855-48db-40c6-b072-ee5f9f6c7d5c/odzSNJFmyh.lottie",
+        },
+    ];
+
+    const TodaysData = [
+        {
+            id: 1,
+            name: "Total Sales",
+            field: `₹${allState?.today?.todaySale}`,
+            icon: "https://lottie.host/8e5bbb43-3d16-415c-aedd-866310e7576c/u1vV7eQ3TR.lottie",
+        },
+        {
+            id: 2,
+            name: "Total Purchase",
+            field: `₹${allState?.today?.todayPurchase}`,
+            icon: "https://lottie.host/329f8239-9b93-4c6b-9f49-3a995966b9ba/4PPSZkIciI.lottie",
+        },
+        {
+            id: 3,
+            name: "Total Expense",
+            field: `₹${allState?.today?.todayExpense}`,
+            icon: "https://lottie.host/b0e60cca-b752-4bc8-8fe9-363b5dd54908/Iro82wuXxW.lottie",
+        },
+        {
+            id: 4,
+            name: "Total Profit",
+            field: `₹${allState?.today?.todayProfit}`,
+            icon: "https://lottie.host/0eead098-07e9-4933-be67-a2e8c4d3153f/gI6pNBqaAL.lottie",
+        },
+        {
+            id: 5,
+            name: "Total Loss",
+            field: `₹${allState?.today?.todayLoss}`,
+            icon: "https://lottie.host/daa9d2bb-4f9b-492e-87bc-7fbe320851c8/SiP2vbrcX3.lottie",
+        },
+    ];
+
+
+    console.warn = (message) =>
+        message.includes("Buffer size mismatch") ? null : console.warn(message);
+
+
     return (
         <div className="Home">
             <div className="Home-main">
@@ -48,72 +139,14 @@ const Home = () => {
 
                 {view === "all" && (
                     <div className="top-boxes">
-                        <div className="small-box">
-                            <h4>₹{allState?.totals?.balance}</h4>
-                            <p>Balance</p>
-                        </div>
-                        <div className="small-box">
-                            <h4>₹{allState?.totals?.saleTotal}</h4>
-                            <p>Total Sell</p>
-                        </div>
-                        <div className="small-box">
-                            <h4>₹{allState?.totals?.purchaseTotal}</h4>
-                            <p>Total Purchase</p>
-                        </div>
-                        <div className="small-box">
-                            <h4>₹{allState?.totals?.expenseTotal}</h4>
-                            <p>Total Expense</p>
-                        </div>
-                        <div className="small-box">
-                            <h4>₹{allState?.totals?.othersTotal}</h4>
-                            <p>Total Others</p>
-                        </div>
-                        <div className="small-box">
-                            <h4>₹{allState?.totals?.profitTotal}</h4>
-                            <p>Total profit</p>
-                        </div>
-                        <div className="small-box">
-                            <h4>₹{allState?.totals?.lossTotal}</h4>
-                            <p>Total Loss</p>
-                        </div>
-                        <div className="small-box">
-                            <h4>{pending}</h4>
-                            <p>Processing</p>
-                        </div>
-                        <div className="small-box">
-                            <h4>{completed}</h4>
-                            <p>Completed</p>
-                        </div>
+                        <HomeCard TotalData={TotalData} />
                     </div>
                 )}
                 {view === "today" && (
                     <>
                         {/* <h5 className="top-heading">Today's Stats</h5> */}
                         <div className="top-boxes">
-                            <div className="small-box">
-                                <h4>₹{allState?.today?.todaySale}</h4>
-                                <p>Sell</p>
-                            </div>
-                            <div className="small-box">
-                                <h4>₹{allState?.today?.todayPurchase}</h4>
-                                <p>Purchase</p>
-                            </div>
-                            <div className="small-box">
-                                <h4>₹{allState?.today?.todayExpense}</h4>
-                                <p>Expense</p>
-                            </div>
-                            <div className="small-box">
-                                <h4>₹{allState?.today?.todayOthers}</h4>
-                                <p>Others</p>
-                            </div>
-                            <div className="small-box">
-                                <h4>₹{allState?.today?.todayProfit}</h4>
-                                <p> profit</p>
-                            </div>
-                            <div className="small-box">
-                                <h4>₹{allState?.today?.todayLoss}</h4>
-                                <p> Loss</p>
-                            </div>
+                            <HomeCard TotalData={TodaysData} />
                         </div>
                     </>
                 )}

@@ -20,6 +20,7 @@
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
+    gap: 10px;
 }
 
 .input-field {
@@ -47,4 +48,8 @@
     margin-top: 10px;
     border-radius: 8px;
     border: none;
+}
+
+.modal-item.purchase{
+    color: red;
 }

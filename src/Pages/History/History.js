@@ -17,7 +17,7 @@ const History = () => {
     }
   }, [navigate]);
 
-  console.log(entries, "entries");
+//   console.log(entries, "entries");
   const [search, setSearch] = useState("");
   const [openSell, setOpenSell] = useState(null); // store open SELL id
 
@@ -33,7 +33,7 @@ const History = () => {
   // Children (purchase + rest) stay same
   const purchases = entries.filter((e) => e.type === "purchase");
   const restMoneys = entries.filter((e) => e.type === "restMoney");
-
+  const deliveries = entries.filter((e) => e.type === "delivery");
   const loggedInUserId = adminDetail._id;
 
   if (!entries.length) {
@@ -71,6 +71,10 @@ const History = () => {
                 (p) => String(p.linkedSellId) === String(item._id)
               );
 
+              const relatedDelivery = deliveries.filter(
+                (d) => String(d.linkedSellId) === String(item._id)
+              );
+
               // REST MONEY entries under SELL only
               const relatedRest = restMoneys.filter(
                 (r) => String(r.linkedSellId) === String(item._id)
@@ -85,6 +89,7 @@ const History = () => {
                     setOpenSell={setOpenSell}
                     purchases={purchases}
                     loggedInUserId={loggedInUserId}
+                    getAllEntries={getAllEntries}
                   />
 
                   {/* Only SELL has children */}
@@ -98,6 +103,7 @@ const History = () => {
                               data={p}
                               isChild={true}
                               loggedInUserId={loggedInUserId}
+                              getAllEntries={getAllEntries}
                             />
                           ))}
                         </>
@@ -111,6 +117,20 @@ const History = () => {
                               data={r}
                               isChild={true}
                               loggedInUserId={loggedInUserId}
+                              getAllEntries={getAllEntries}
+                            />
+                          ))}
+                        </>
+                      )}
+                      {relatedDelivery.length > 0 && (
+                        <>
+                          {relatedDelivery.map((d) => (
+                            <Card
+                              key={d._id}
+                              data={d}
+                              isChild={true}
+                              loggedInUserId={loggedInUserId}
+                              getAllEntries={getAllEntries}
                             />
                           ))}
                         </>

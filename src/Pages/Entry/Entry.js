@@ -20,7 +20,7 @@ const Entry = () => {
     advance: "",
     restMoney: "",
     gstIncluded: false,
-    hasDelivery: false,
+    hasDelivery: true,
     deliveryCharge: "",
     linkedSellId: "",
   });
@@ -160,7 +160,7 @@ const Entry = () => {
               <option value="">Select type of Entry</option>
               <option value="sell">Sell</option>
               <option value="purchase">Purchase</option>
-              <option value="others">Others</option>
+              {/* <option value="others">Others</option> */}
               <option value="expense">Expense</option>
             </select>
           </div>
@@ -186,48 +186,55 @@ const Entry = () => {
             )}
           </>
         )}
+        {data.type !== "expense" && (
+          <>
+            <div className="box">
+              <label>Name</label>
+              <input
+                type="text"
+                value={data.name}
+                onChange={(e) => upd("name", e.target.value)}
+                placeholder="Customer / Supplier name"
+              />
+            </div>
 
-        <div className="box">
-          <label>Name</label>
-          <input
-            type="text"
-            value={data.name}
-            onChange={(e) => upd("name", e.target.value)}
-            placeholder="Customer / Supplier name"
-          />
-        </div>
-
-        <div className="box">
-          <label>Company name</label>
-          <input
-            type="text"
-            value={data.company}
-            onChange={(e) => upd("company", e.target.value)}
-            placeholder="Company / Shop name (optional)"
-          />
-        </div>
+            <div className="box">
+              <label>Company name</label>
+              <input
+                type="text"
+                value={data.company}
+                onChange={(e) => upd("company", e.target.value)}
+                placeholder="Company / Shop name (optional)"
+              />
+            </div>
+          </>
+        )}
 
         {data.type !== "restMoney" && (
           <>
-            <div className="box">
-              <label>Phone</label>
-              <input
-                type="tel"
-                value={data.phone}
-                onChange={(e) => upd("phone", e.target.value)}
-                placeholder="Phone number"
-              />
-            </div>
+            {data.type !== "expense" && (
+              <>
+                <div className="box">
+                  <label>Phone</label>
+                  <input
+                    type="tel"
+                    value={data.phone}
+                    onChange={(e) => upd("phone", e.target.value)}
+                    placeholder="Phone number"
+                  />
+                </div>
 
-            <div className="box">
-              <label>Address</label>
-              <input
-                type="text"
-                value={data.address}
-                onChange={(e) => upd("address", e.target.value)}
-                placeholder="Address (optional)"
-              />
-            </div>
+                <div className="box">
+                  <label>Address</label>
+                  <input
+                    type="text"
+                    value={data.address}
+                    onChange={(e) => upd("address", e.target.value)}
+                    placeholder="Address (optional)"
+                  />
+                </div>
+              </>
+            )}
 
             <div className="box">
               <label>Note</label>
@@ -300,7 +307,7 @@ const Entry = () => {
             </label>
           )}
 
-          {(data.type === "sell" || data.type === "purchase") && (
+          {/* {(data.type === "sell" || data.type === "purchase") && (
             <label style={{ marginLeft: 12 }}>
               <input
                 type="checkbox"
@@ -309,10 +316,10 @@ const Entry = () => {
               />{" "}
               Delivery charge?
             </label>
-          )}
+          )} */}
         </div>
 
-        {data.hasDelivery && (
+        {/* {data.hasDelivery && (
           <div className="box">
             <label>Delivery charge</label>
             <input
@@ -323,7 +330,7 @@ const Entry = () => {
               min="0"
             />
           </div>
-        )}
+        )} */}
 
         <div className="modal-buttons">
           <button className="btn-primary" onClick={handleSubmit}>
