@@ -44,7 +44,7 @@ const Entry = () => {
 
   // ---------------- FETCH ENTRY DATA WHEN EDITING ----------------
   const loadEntry = async () => {
-    setMessage(true)
+    setMessage(true);
     if (!isEdit) return;
     const token = localStorage.getItem("token");
 
@@ -55,7 +55,7 @@ const Entry = () => {
     const entryData = await res.json();
 
     if (entryData.success) {
-      setMessage(false)
+      setMessage(false);
       setData({
         type: entryData.entry.type,
         name: entryData.entry.name || "",
@@ -226,7 +226,10 @@ const Entry = () => {
                   <input
                     type="number"
                     value={data.phone}
-                    onChange={(e) => upd("phone", e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value.slice(0, 10); // limit to 10 digits
+                      upd("phone", value);
+                    }}
                     placeholder="Phone number"
                   />
                 </div>

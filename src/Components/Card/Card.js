@@ -22,6 +22,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
     const [loading, setLoading] = useState(false);
     const isOwner = String(loggedInUserId) === String(data.createdBy);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+    const [showDetailsModal, setShowDetailsModal] = useState(false);
 
     const handleTouch = (e) => {
         const movement =
@@ -180,6 +181,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
         return initials.slice(0, 2);
     };
     // console.log(createdByAdmin, "createdByAdmin")
+    console.log(data, "data")
 
     return (
         <div className="entry-card-wrapper">
@@ -187,12 +189,19 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                 className={`entry-card ${data.type}`}
                 style={{ transform: `translateX(${swipe}px)` }}
                 onTouchMove={handleTouch}
+                onClick={(e) => {
+                    // Don't open when clicking action button or swipe buttons
+                    if (e.target.classList.contains("action")) return;
+                    if (swipe !== 0) return;
+
+                    setShowDetailsModal(true);
+                }}
             >
                 <span className="admin-name">{formatShortName(createdByAdmin?.userName)}</span>
                 <div className="card-top">
                     <div className="card-left">
                         <h4>
-                            {data.name} {data.type !== "delivery" ? <span>({data.company})</span> : <span>({data.note})</span>}{" "}
+                            {data.name ? data.name : data.note} {data.type !== "delivery" ? <span>{data.company ? "(" + data.company + ")" : ""}</span> : <span>({data.note})</span>}
                         </h4>
                         <p>
                             {data.type} Entry on {formatDate(data.createdAt)}
@@ -339,6 +348,100 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
             {loading &&
                 <Loader />
             }
+            {showDetailsModal && (
+                <div className="modal-overlay">
+                    <div className="modal-box">
+                        <h3>Entry Details</h3>
+                        {data.type &&
+                            <div className="modal-item">
+                                <b>Type:</b>
+                                <span>{data.type}</span>
+                            </div>
+                        }
+                        {data.name &&
+                            <div className="modal-item">
+                                <b>Name:</b>
+                                <span>{data.name}</span>
+                            </div>
+                        }
+                        {data.company &&
+                            <div className="modal-item">
+                                <b>Company:</b>
+                                <span>{data.company}</span>
+                            </div>
+                        }
+                        {data.note &&
+                            <div className="modal-item">
+                                <b>Note:</b>
+                                <span>{data.note}</span>
+                            </div>
+                        }
+                        {data.phone &&
+                            <div className="modal-item">
+                                <b>Phone No.:</b>
+                                <span>{data.phone}</span>
+                            </div>
+                        }
+                        {data.address &&
+                            <div className="modal-item">
+                                <b>Address:</b>
+                                <span>{data.address}</span>
+                            </div>
+                        }
+                        {data.gstIncluded &&
+                            <div className="modal-item">
+                                <b>GST :</b>
+                                <span>{data.gstIncluded}</span>
+                            </div>
+                        }
+                        {data.deliveryCharge ?
+                            <div className="modal-item">
+                                <b>Delivery Charge :</b>
+                                <span>{data.deliveryCharge}</span>
+                            </div>
+                            : ""}
+                        {data.profitOrLoss ?
+                            <div className="modal-item">
+                                <b>Profit Or Loss :</b>
+                                <span>{data.profitOrLoss}</span>
+                            </div>
+                            : ""}
+                        {data.totalAmount &&
+                            <div className="modal-item">
+                                <b>Amount:</b>
+                                <span>₹{formatAmount(Number(data.totalAmount))}</span>
+                            </div>
+                        }
+                        {data.advance ?
+                            <div className="modal-item">
+                                <b>Advance:</b>
+                                <span>₹{formatAmount(Number(data.advance))}</span>
+                            </div>
+                            : ""}
+                        {data.restMoney ?
+                            <div className="modal-item">
+                                <b>Rest Money:</b>
+                                <span>₹{formatAmount(Number(data.restMoney))}</span>
+                            </div>
+                            : ""}
+                        {data.createdAt &&
+                            <div className="modal-item">
+                                <b>Date:</b>
+                                <span>{formatDate(data.createdAt)}</span>
+                            </div>
+                        }
+                        {data.orderId &&
+                            <div className="modal-item">
+                                <b>OrderId:</b>
+                                <span>{data.orderId}</span>
+                            </div>
+                        }
+                        <button className="close" onClick={() => setShowDetailsModal(false)}>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
