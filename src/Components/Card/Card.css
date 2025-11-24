@@ -148,3 +148,17 @@
   align-items: center;
   justify-content: center;
 }
+
+.top-border{
+  border-bottom: 1px solid #ddd;
+}
+.top-border .profit{
+  color: green;
+  font-size: 20px;
+  font-weight: 800;
+}
+.top-border .loss{
+  color: red;
+  font-size: 20px;
+  font-weight: 800;
+}

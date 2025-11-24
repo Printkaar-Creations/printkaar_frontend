@@ -351,7 +351,19 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
             {showDetailsModal && (
                 <div className="modal-overlay">
                     <div className="modal-box">
-                        <h3>Entry Details</h3>
+                        <div className="modal-item top-border">
+                            <h3>Details</h3>
+                            {data.profitOrLoss ?
+                                <>
+                                    {data.profitType === "profit" ?
+                                        (<span className={`${data.profitType}`}>₹{formatAmount(Number(data.profitOrLoss))} <TrendingUp /></span>)
+                                        :
+                                        (<span className={`${data.profitType}`}>₹{formatAmount(Number(data.profitOrLoss))} <TrendingDown /></span>)
+                                    }
+
+                                </>
+                                : ""}
+                        </div>
                         {data.type &&
                             <div className="modal-item">
                                 <b>Type:</b>
@@ -400,12 +412,6 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                                 <span>{data.deliveryCharge}</span>
                             </div>
                             : ""}
-                        {data.profitOrLoss ?
-                            <div className="modal-item">
-                                <b>Profit Or Loss :</b>
-                                <span>{data.profitOrLoss}</span>
-                            </div>
-                            : ""}
                         {data.totalAmount &&
                             <div className="modal-item">
                                 <b>Amount:</b>
@@ -432,7 +438,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                         }
                         {data.orderId &&
                             <div className="modal-item">
-                                <b>OrderId:</b>
+                                <b>Order Id:</b>
                                 <span>{data.orderId}</span>
                             </div>
                         }

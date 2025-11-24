@@ -86,13 +86,6 @@ const Entry = () => {
   // helper: update a single field
   const upd = (field, value) => setData((d) => ({ ...d, [field]: value }));
 
-  // validate phone simple
-  const validPhone = (p) => {
-    if (!p) return true;
-    const s = String(p).trim();
-    return /^[0-9]{7,15}$/.test(s); // allow 7-15 digits
-  };
-
   // ---------------- SUBMIT (ADD / EDIT) ----------------
   const handleSubmit = async () => {
     setMessage(true);

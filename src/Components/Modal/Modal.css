@@ -40,10 +40,6 @@
     margin-top: 10px;
     border: none;
 }
-.modal-box h3 {
-   border-bottom: 1px solid #ddd;
-   padding-bottom: 5px;
-}
 
 .modal-box .close {
     width: 100%;
