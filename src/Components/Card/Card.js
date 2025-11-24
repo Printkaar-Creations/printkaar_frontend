@@ -13,11 +13,13 @@ import {
 import Modal from "../Modal/Modal";
 import Host from "../../Host";
 import { useNavigate } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEntries }) => {
     const navigate = useNavigate();
     const [swipe, setSwipe] = useState(0);
     const [showModal, setShowModal] = useState(false);
+    const [loading, setLoading] = useState(false);
     const isOwner = String(loggedInUserId) === String(data.createdBy);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
@@ -57,6 +59,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
     // Add Payment Handler
     const handleAddPayment = async (amount, data, deliveryType, deliveryAmount) => {
         console.log(amount, data, "daaaa");
+        setLoading(true);
         try {
             const res = await fetch(`${Host}/entry/add`, {
                 method: "POST",
@@ -79,6 +82,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
             if (out.success) {
                 getAllEntries();
                 setShowModal(false)
+                setLoading(false);
             } else {
                 alert("Failed to add money");
             }
@@ -88,6 +92,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
     };
 
     const handleDelete = async () => {
+        setLoading(true);
         try {
             const res = await fetch(`${Host}/entry/delete/${data._id}`, {
                 method: "DELETE",
@@ -99,6 +104,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
             const out = await res.json();
             if (out.success) {
                 getAllEntries();
+                setLoading(false);
             } else {
                 alert("Delete failed");
             }
@@ -108,6 +114,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
     };
 
     const handleReview = async (status) => {
+        setLoading(true);
         try {
             const res = await fetch(`${Host}/entry/review/${data._id}`, {
                 method: "POST",
@@ -121,6 +128,8 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
             const out = await res.json();
             if (out.success) {
                 getAllEntries()
+                setLoading(false);
+                setSwipe(0);
             } else {
                 alert("Failed to update review");
             }
@@ -129,9 +138,11 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
         }
     };
 
+    const [createdByAdmin, setCreatedByAdmin] = useState();
     const [reviewAdmin, setReviewAdmin] = useState();
 
     const getAllAdmin = async () => {
+        // setLoading(true);
         const response = await fetch(`${Host}/auth/getallusers`, {
             method: "GET",
             headers: {
@@ -141,15 +152,34 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
         });
         const json = await response.json();
         // console.log(json, "json");
+        const admindata = json.find((i) => i._id === data.createdBy)
+        setCreatedByAdmin(admindata);
         const admin = json.find((i) => i._id === data.reviewedBy)
         setReviewAdmin(admin);
+        // setLoading(false);
     };
 
     useEffect(() => {
         getAllAdmin()
-    }, [data.reviewedBy])
+    }, [data])
 
-    // console.log(reviewAdmin,"reviewAdmin")
+    // console.log(reviewAdmin?.userName, "reviewAdmin")
+
+    const formatAmount = (num) => {
+        const formatted = new Intl.NumberFormat("en-IN").format(num);
+        // console.log(formatted, "formatted");
+        return formatted;
+    };
+
+    const formatShortName = (name) => {
+        if (!name) return "";
+
+        const parts = name.trim().split(" ");
+        // Default: first letter of each word (max 2 letters)
+        const initials = parts.map(p => p[0]).join("").toUpperCase();
+        return initials.slice(0, 2);
+    };
+    // console.log(createdByAdmin, "createdByAdmin")
 
     return (
         <div className="entry-card-wrapper">
@@ -158,10 +188,11 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                 style={{ transform: `translateX(${swipe}px)` }}
                 onTouchMove={handleTouch}
             >
+                <span className="admin-name">{formatShortName(createdByAdmin?.userName)}</span>
                 <div className="card-top">
                     <div className="card-left">
                         <h4>
-                            {data.name} {data.type !== "delivery" ?<span>({data.company})</span> : <span>({data.note})</span>}{" "}
+                            {data.name} {data.type !== "delivery" ? <span>({data.company})</span> : <span>({data.note})</span>}{" "}
                         </h4>
                         <p>
                             {data.type} Entry on {formatDate(data.createdAt)}
@@ -169,22 +200,25 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                     </div>
                     <div className="card-right">
                         {data.type === "restMoney" ? (
-                            <p>₹{data?.restMoney}</p>
+                            <p>₹{formatAmount(Number(data?.restMoney))}</p>
+                            // <p>₹{data?.restMoney}</p>
                         ) : (
-                            <p>₹{data.totalAmount}</p>
+                            <p>₹{formatAmount(Number(data?.totalAmount))}</p>
+                            // <p>₹{data.totalAmount}</p>
                         )}
-                        {data.type === "sell" && <p>₹{data.advance}</p>}
+                        {data.type === "purchase" && <p>DC ₹{formatAmount(Number(data?.deliveryCharge))}</p>}
+                        {data.type === "sell" && <p>Adv ₹{formatAmount(Number(data?.advance))}</p>}
                     </div>
                 </div>
+                {data.reviewedBy &&
+                    <>
+                        <p className={`review-status ${data.status === "correct" ? "green" : "red"}`}>Reviewed By {reviewAdmin?.userName}</p>
+                    </>
+                }
                 {data.type === "sell" && (
                     <>
                         {data.action === "completed" ? (
                             <>
-                                {data.reviewedBy &&
-                                    <>
-                                        <p className={`review-status ${data.status === "correct" ? "green" : "red"}`}>Reviewed By {reviewAdmin?.userName}</p>
-                                    </>
-                                }
                                 <hr />
                                 <div className="card-top">
                                     <div className="card-left">
@@ -193,11 +227,13 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                                     <div className="card-right">
                                         {statement === "profit" ? (
                                             <p className="profit">
-                                                ₹{difference} <TrendingUp />
+                                                ₹{formatAmount(Number(difference))} <TrendingUp />
+                                                {/* ₹{difference} <TrendingUp /> */}
                                             </p>
                                         ) : (
                                             <p className="loss">
-                                                ₹{difference} <TrendingDown />
+                                                ₹{formatAmount(Number(difference))} <TrendingDown />
+                                                {/* ₹{difference} <TrendingDown /> */}
                                             </p>
                                         )}
                                     </div>
@@ -205,13 +241,14 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                             </>
                         ) : (
                             <>
+
                                 <hr />
                                 <div className="card-top">
                                     <div className="card-left">
                                         <h4>{data.orderId}</h4>
                                     </div>
                                     <div className="card-right">
-                                        <p>₹{remaining}</p>
+                                        <p>₹{formatAmount(Number(remaining))}</p>
                                         <p className="action" onClick={() => setShowModal(true)}>
                                             action
                                         </p>
@@ -290,6 +327,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                     purchases={relatedPurchases}
                     onClose={() => setShowModal(false)}
                     onAddPayment={handleAddPayment}
+                    formatAmount={formatAmount}
                 />
             )}
             {showDeleteConfirm && (
@@ -298,6 +336,9 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                     onNo={() => setShowDeleteConfirm(false)}
                 />
             )}
+            {loading &&
+                <Loader />
+            }
         </div>
     );
 };

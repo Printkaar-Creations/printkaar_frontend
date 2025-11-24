@@ -3,15 +3,18 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import Host from "../../Host";
 import logo from "../../Assets/logo08.png"
+import Loader from "../../Components/Loader/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
+    setLoading(true)
     setError("");
 
     if (!email || !password) {
@@ -40,7 +43,7 @@ const Login = () => {
 
       // Save token
       localStorage.setItem("token", data.authToken);
-
+      setLoading(false)
       navigate("/pin");
     } catch (err) {
       console.error(err);
@@ -74,6 +77,9 @@ const Login = () => {
 
         <button onClick={handleSubmit}>Login</button>
       </div>
+      {loading && (
+        <Loader/>
+      )}
     </div>
   );
 };

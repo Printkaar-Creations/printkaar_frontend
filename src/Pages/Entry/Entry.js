@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./Entry.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Host from "../../Host";
+import { Loader } from "lucide-react";
 
 const Entry = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const id = location.state || null; // id = "64abc123..." OR null
   const isEdit = typeof id === "string";
+  const [loading, setLoading] = useState(false);
 
   const [data, setData] = useState({
     type: "",
@@ -20,7 +22,7 @@ const Entry = () => {
     advance: "",
     restMoney: "",
     gstIncluded: false,
-    hasDelivery: true,
+    hasDelivery: false,
     deliveryCharge: "",
     linkedSellId: "",
   });
@@ -42,6 +44,7 @@ const Entry = () => {
 
   // ---------------- FETCH ENTRY DATA WHEN EDITING ----------------
   const loadEntry = async () => {
+    setMessage(true)
     if (!isEdit) return;
     const token = localStorage.getItem("token");
 
@@ -52,6 +55,7 @@ const Entry = () => {
     const entryData = await res.json();
 
     if (entryData.success) {
+      setMessage(false)
       setData({
         type: entryData.entry.type,
         name: entryData.entry.name || "",
@@ -91,6 +95,7 @@ const Entry = () => {
 
   // ---------------- SUBMIT (ADD / EDIT) ----------------
   const handleSubmit = async () => {
+    setMessage(true);
     const token = localStorage.getItem("token");
 
     // Basic validations
@@ -127,6 +132,8 @@ const Entry = () => {
       method = "PUT";
     }
 
+    console.log(data, "data");
+
     const res = await fetch(url, {
       method,
       headers: {
@@ -140,7 +147,7 @@ const Entry = () => {
 
     if (result.success) {
       setMessage("Saved Successfully!");
-      setTimeout(() => navigate("/"), 1200);
+      setTimeout(() => navigate("/"), setMessage(false), 1200);
     } else {
       setMessage(result.error || "Something went wrong");
     }
@@ -217,7 +224,7 @@ const Entry = () => {
                 <div className="box">
                   <label>Phone</label>
                   <input
-                    type="tel"
+                    type="number"
                     value={data.phone}
                     onChange={(e) => upd("phone", e.target.value)}
                     placeholder="Phone number"
@@ -307,7 +314,7 @@ const Entry = () => {
             </label>
           )}
 
-          {/* {(data.type === "sell" || data.type === "purchase") && (
+          {data.type === "purchase" && (
             <label style={{ marginLeft: 12 }}>
               <input
                 type="checkbox"
@@ -316,10 +323,10 @@ const Entry = () => {
               />{" "}
               Delivery charge?
             </label>
-          )} */}
+          )}
         </div>
 
-        {/* {data.hasDelivery && (
+        {data.hasDelivery && (
           <div className="box">
             <label>Delivery charge</label>
             <input
@@ -330,7 +337,7 @@ const Entry = () => {
               min="0"
             />
           </div>
-        )} */}
+        )}
 
         <div className="modal-buttons">
           <button className="btn-primary" onClick={handleSubmit}>
@@ -340,6 +347,7 @@ const Entry = () => {
 
         {message && <div className="message">{message}</div>}
       </div>
+      {loading && <Loader />}
     </div>
   );
 };

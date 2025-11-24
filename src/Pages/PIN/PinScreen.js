@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Delete, X } from "lucide-react";
 import Host from "../../Host";
 import NoteContext from "../../Context/AppContext";
+import Loader from "../../Components/Loader/Loader";
 
 const PinScreen = () => {
   const { adminDetail, getAccountDetails } = useContext(NoteContext);
@@ -19,6 +20,7 @@ const PinScreen = () => {
   const [pin, setPin] = useState("");
   const [error, setError] = useState("");
   const [attempts, setAttempts] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   // MODALS
   const [showPasswordModal, setShowPasswordModal] = useState(false);
@@ -48,6 +50,7 @@ const PinScreen = () => {
   // VERIFY PIN
   // --------------------------------------------------
   const verifyPin = async (value) => {
+    setLoading(true)
     try {
       const token = localStorage.getItem("token");
 
@@ -65,6 +68,7 @@ const PinScreen = () => {
       if (data.success) {
         localStorage.setItem("pinVerified", "true");
         navigate("/");
+        setLoading(false)
       } else {
         const newAttempts = attempts + 1;
         setAttempts(newAttempts);
@@ -85,6 +89,7 @@ const PinScreen = () => {
   // STEP 1: VERIFY PASSWORD
   // --------------------------------------------------
   const handleVerifyPassword = async () => {
+    setLoading(true)
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(`${Host}/auth/login`, {
@@ -102,6 +107,7 @@ const PinScreen = () => {
         // Password correct → open reset PIN modal
         setShowPasswordModal(false);
         setShowResetPinModal(true);
+        setLoading(false)
       } else {
         setError("Incorrect password");
       }
@@ -115,6 +121,7 @@ const PinScreen = () => {
   // STEP 2: RESET NEW PIN
   // --------------------------------------------------
   const handleResetPin = async () => {
+    setLoading(true)
     if (newPin.length !== 6) {
       setError("PIN must be 6 digits");
       return;
@@ -138,7 +145,8 @@ const PinScreen = () => {
         setShowResetPinModal(false);
         setAttempts(0);
         setError("");
-        alert("PIN updated successfully!");
+        // alert("PIN updated successfully!");
+        setLoading(false)
       } else {
         setError("Failed to update PIN");
       }
@@ -255,6 +263,7 @@ const PinScreen = () => {
           </div>
         </div>
       )}
+      {loading && <Loader />}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ForgotPassword.css";
 import { useNavigate } from "react-router-dom";
 import Host from "../../Host";
+import Loader from "../../Components/Loader/Loader";
 
 const ForgotPassword = () => {
   const [step, setStep] = useState(1); // 1 = email, 2 = otp+new password
@@ -10,10 +11,12 @@ const ForgotPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSendOtp = async () => {
+    setLoading(true)
     setError("");
     setMessage("");
 
@@ -34,6 +37,7 @@ const ForgotPassword = () => {
       if (data.success) {
         setMessage("OTP sent to your email");
         setStep(2);
+        setLoading(false)
       } else {
         setError(data.error || "Failed to send OTP");
       }
@@ -44,6 +48,7 @@ const ForgotPassword = () => {
   };
 
   const handleResetPassword = async () => {
+    setLoading(true)
     setError("");
     setMessage("");
 
@@ -64,6 +69,7 @@ const ForgotPassword = () => {
       if (data.success) {
         setMessage("Password reset successfully. Please login.");
         setTimeout(() => navigate("/login"), 1500);
+        setLoading(false)
       } else {
         setError(data.error || "Failed to reset password");
       }
@@ -121,6 +127,9 @@ const ForgotPassword = () => {
           </>
         )}
       </div>
+      {loading && (
+        <Loader/>
+      )}
     </div>
   );
 };

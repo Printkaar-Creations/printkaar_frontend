@@ -116,6 +116,7 @@
 
 .review-status {
   font-size: 12px;
+  margin: 0;
 }
 .review-status.green {
   color: green;
@@ -130,4 +131,20 @@
 
 .entry-card.restMoney {
   background-color: rgba(64, 255, 0, 0.198);
+}
+
+.entry-card .admin-name {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  font-size: 10px;
+  color: white;
+  background-color: #016b61;
+  border-radius: 50px;
+  padding: 5px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

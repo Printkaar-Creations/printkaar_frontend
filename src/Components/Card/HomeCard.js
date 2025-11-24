@@ -2,6 +2,14 @@ import React from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const HomeCard = ({ TotalData }) => {
+  const formatAmount = (value) => {
+    if (!value) return "0";
+
+    // Remove ₹ and commas if present
+    const num = Number(String(value).replace(/[₹,]/g, ""));
+
+    return new Intl.NumberFormat("en-IN").format(num);
+  };
 
   return (
     <>
@@ -14,7 +22,13 @@ const HomeCard = ({ TotalData }) => {
             autoplay
             onError={(e) => console.error("Lottie load error:", e)}
           />
-          <h4>{data.field}</h4>
+          {data.name === "Processing" ||
+            (data.name === "Completed" ? (
+              <h4>{formatAmount(data.field)}</h4>
+            ) : (
+             <h4>₹{formatAmount(data.field)}</h4>
+            ))}
+
           <p>{data.name}</p>
         </div>
       ))}

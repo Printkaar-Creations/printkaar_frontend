@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NoteContext from "../../Context/AppContext";
 import Card from "../../Components/Card/Card";
+import Loader from "../../Components/Loader/Loader";
 
 const History = () => {
   const { entries, getAllEntries, adminDetail, getAccountDetails } =
     useContext(NoteContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -14,10 +16,11 @@ const History = () => {
     } else {
       getAllEntries();
       getAccountDetails();
+      setLoading(false);
     }
   }, [navigate]);
 
-//   console.log(entries, "entries");
+  //   console.log(entries, "entries");
   const [search, setSearch] = useState("");
   const [openSell, setOpenSell] = useState(null); // store open SELL id
 
@@ -142,6 +145,7 @@ const History = () => {
             })}
         </div>
       </div>
+      {loading && <Loader />}
     </div>
   );
 };

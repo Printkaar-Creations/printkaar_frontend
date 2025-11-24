@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./Modal.css";
-import { useNavigate } from "react-router-dom";
 import Host from "../../Host";
+import Loader from "../Loader/Loader";
 
-const Modal = ({ data, purchases, onClose, onAddPayment }) => {
-    const navigate = useNavigate();
+const Modal = ({ data, purchases, onClose, onAddPayment, formatAmount }) => {
 
     const [deliveryType, setDeliveryType] = useState("");
     const [deliveryAmount, setDeliveryAmount] = useState("");
     const [payAmount, setPayAmount] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const purchaseTotal = purchases.reduce(
-        (sum, p) => sum + Number(p.totalAmount || 0),
+        (sum, p) => sum + Number(p.totalAmount || 0) + Number(p.deliveryCharge || 0),
         0
     );
 
@@ -20,6 +20,7 @@ const Modal = ({ data, purchases, onClose, onAddPayment }) => {
     //   console.log(data, "data");
 
     const submitDeliveryCharge = async () => {
+        setLoading(true)
         if (!deliveryAmount || Number(deliveryAmount) <= 0) {
             alert("Enter valid delivery charge");
             return;
@@ -56,6 +57,7 @@ const Modal = ({ data, purchases, onClose, onAddPayment }) => {
             setDeliveryAmount("");
             setDeliveryType("");
             onClose();
+            setLoading(false)
         } else {
             alert("Failed to add delivery charge");
         }
@@ -68,22 +70,25 @@ const Modal = ({ data, purchases, onClose, onAddPayment }) => {
 
                 <div className="modal-item">
                     <p>Total Amount:</p>
-                    <span>₹{data.totalAmount}</span>
+                    <span>₹{formatAmount(Number(data?.totalAmount))}</span>
                 </div>
 
                 <div className="modal-item">
                     <p>Advance Received:</p>
-                    <span>₹{data.advance}</span>
+                    {/* <span>₹{data.advance}</span> */}
+                    <span>₹{formatAmount(Number(data?.advance))}</span>
                 </div>
 
                 <div className="modal-item purchase">
                     <p>Total Purchase Amount:</p>
-                    <span>₹{purchaseTotal}</span>
+                    <span>₹{formatAmount(Number(purchaseTotal))}</span>
+                    {/* <span>₹{purchaseTotal}</span> */}
                 </div>
 
                 <div className="modal-item">
                     <p>Remaining Amount:</p>
-                    <span>₹{remaining}</span>
+                    {/* <span>₹{remaining}</span> */}
+                    <span>₹{formatAmount(Number(remaining))}</span>
                 </div>
                 {/* DELIVERY TYPE */}
                 <div className="modal-item">
@@ -147,6 +152,9 @@ const Modal = ({ data, purchases, onClose, onAddPayment }) => {
                     Close
                 </button>
             </div>
+            {loading && (
+                <Loader />
+            )}
         </div>
     );
 };
