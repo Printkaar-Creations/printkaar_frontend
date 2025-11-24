@@ -409,7 +409,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                         {data.deliveryCharge ?
                             <div className="modal-item">
                                 <b>Delivery Charge :</b>
-                                <span>{data.deliveryCharge}</span>
+                                <span>₹{formatAmount(Number(data.deliveryCharge))}</span>
                             </div>
                             : ""}
                         {data.totalAmount &&
