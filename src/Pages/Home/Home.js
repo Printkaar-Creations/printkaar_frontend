@@ -41,13 +41,13 @@ const Home = () => {
       id: 2,
       name: "Total Sales",
       field: `₹${allState?.totals?.saleTotal || 0}`,
-      icon: "https://lottie.host/8e5bbb43-3d16-415c-aedd-866310e7576c/u1vV7eQ3TR.lottie",
+      icon: "https://lottie.host/f27a224c-583a-4d1b-abcd-af02de0125b1/U4cRWYc250.lottie",
     },
     {
       id: 3,
       name: "Total Purchase",
       field: `₹${allState?.totals?.purchaseTotal || 0}`,
-      icon: "https://lottie.host/329f8239-9b93-4c6b-9f49-3a995966b9ba/4PPSZkIciI.lottie",
+      icon: "https://lottie.host/7dfccd0c-b336-4c32-b7a8-e77939a637fd/yTEdE281bd.lottie",
     },
     {
       id: 4,
@@ -71,7 +71,7 @@ const Home = () => {
       id: 7,
       name: "Processing",
       field: pending,
-      icon: "https://lottie.host/d6cf7a71-53a0-42ad-83f2-02a04346d722/BWeb6rvunY.lottie",
+      icon: "https://lottie.host/0d975268-6292-48ac-96ec-a85c48b8b912/ZrNfFHIoC7.lottie",
     },
     {
       id: 8,
@@ -86,13 +86,13 @@ const Home = () => {
       id: 1,
       name: "Total Sales",
       field: `₹${allState?.today?.todaySale || 0}`,
-      icon: "https://lottie.host/8e5bbb43-3d16-415c-aedd-866310e7576c/u1vV7eQ3TR.lottie",
+      icon: "https://lottie.host/f27a224c-583a-4d1b-abcd-af02de0125b1/U4cRWYc250.lottie",
     },
     {
       id: 2,
       name: "Total Purchase",
       field: `₹${allState?.today?.todayPurchase || 0}`,
-      icon: "https://lottie.host/329f8239-9b93-4c6b-9f49-3a995966b9ba/4PPSZkIciI.lottie",
+      icon: "https://lottie.host/7dfccd0c-b336-4c32-b7a8-e77939a637fd/yTEdE281bd.lottie",
     },
     {
       id: 3,
@@ -118,13 +118,13 @@ const Home = () => {
       id: 1,
       name: "Total Sales",
       field: `₹${allState?.month?.monthSale || 0}`,
-      icon: "https://lottie.host/8e5bbb43-3d16-415c-aedd-866310e7576c/u1vV7eQ3TR.lottie",
+      icon: "https://lottie.host/f27a224c-583a-4d1b-abcd-af02de0125b1/U4cRWYc250.lottie",
     },
     {
       id: 2,
       name: "Total Purchase",
       field: `₹${allState?.month?.monthPurchase || 0}`,
-      icon: "https://lottie.host/329f8239-9b93-4c6b-9f49-3a995966b9ba/4PPSZkIciI.lottie",
+      icon: "https://lottie.host/7dfccd0c-b336-4c32-b7a8-e77939a637fd/yTEdE281bd.lottie",
     },
     {
       id: 3,

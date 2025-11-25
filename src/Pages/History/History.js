@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import NoteContext from "../../Context/AppContext";
 import Card from "../../Components/Card/Card";
 import Loader from "../../Components/Loader/Loader";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const History = () => {
   const { entries, getAllEntries, adminDetail, getAccountDetails } =
@@ -41,8 +42,15 @@ const History = () => {
 
   if (!entries.length) {
     return (
-      <div className="Home">
-        <div className="Home-main">
+       <div className="modal-overlay">
+      <div className="modal-box loading-box">
+          <DotLottieReact
+            className="loading-animation"
+            src="https://lottie.host/37f89c04-5502-4327-9493-9c39e2e3f48f/1CzffPOlXz.lottie"
+            loop
+            autoplay
+            onError={(e) => console.error("Lottie load error:", e)}
+          />
           <p>No Transaction Found</p>
         </div>
       </div>

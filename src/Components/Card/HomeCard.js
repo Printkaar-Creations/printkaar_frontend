@@ -11,6 +11,8 @@ const HomeCard = ({ TotalData }) => {
     return new Intl.NumberFormat("en-IN").format(num);
   };
 
+  console.log(TotalData);
+
   return (
     <>
       {TotalData.map((data) => (
@@ -22,12 +24,11 @@ const HomeCard = ({ TotalData }) => {
             autoplay
             onError={(e) => console.error("Lottie load error:", e)}
           />
-          {data.name === "Processing" ||
-            (data.name === "Completed" ? (
-              <h4>{formatAmount(data.field)}</h4>
-            ) : (
-             <h4>₹{formatAmount(data.field)}</h4>
-            ))}
+          {data.name === "Processing" || data.name === "Completed" ? (
+            <h4>{formatAmount(data.field)}</h4>
+          ) : (
+            <h4>₹{formatAmount(data.field)}</h4>
+          )}
 
           <p>{data.name}</p>
         </div>
