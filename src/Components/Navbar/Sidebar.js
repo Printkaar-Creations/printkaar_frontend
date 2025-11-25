@@ -50,48 +50,48 @@ const Sidebar = ({ sideactive, sideRef, handleCloseSidebar, userDetail }) => {
         <div className="sidebar-items">
           <ul>
             <li>
-              <Link onClick={handleProfile} to={"/about"}>
+              <Link onClick={handleProfile} to={"/"}>
                 {" "}
                 <Info />
                 About Us
               </Link>
             </li>
             <li>
-              <Link onClick={handleProfile} to={"/help"}>
+              <Link onClick={handleProfile} to={"/"}>
                 {" "}
                 <MessageCircleQuestionMark />
                 Help
               </Link>
             </li>
             <li>
-              <Link onClick={handleProfile} to={"/history"}>
+              <Link onClick={handleProfile} to={"/"}>
                 {" "}
                 <ArrowRightLeft /> History
               </Link>
             </li>
             <li>
-              <Link onClick={handleProfile} to={"/privacy-policy"}>
+              <Link onClick={handleProfile} to={"/"}>
                 {" "}
                 <ShieldAlert />
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link onClick={handleProfile} to={"/term-and-conditions"}>
+              <Link onClick={handleProfile} to={"/"}>
                 {" "}
                 <Newspaper />
                 Term And Conditions
               </Link>
             </li>
             <li>
-              <Link onClick={handleProfile} to={"/return-refund"}>
+              <Link onClick={handleProfile} to={"/"}>
                 {" "}
                 <BanknoteArrowUp />
                 Return And Refund
               </Link>
             </li>
             <li>
-              <Link onClick={handleProfile} to={""}>
+              <Link onClick={handleProfile} to={"/"}>
                 {" "}
                 <ShieldCheck />
                 Certificates
