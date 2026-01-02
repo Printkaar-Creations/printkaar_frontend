@@ -73,7 +73,7 @@ const Entry = () => {
       });
     } else {
       alert("Entry not found");
-      navigate("/");
+      navigate("/app/home");
     }
   };
 
@@ -140,7 +140,7 @@ const Entry = () => {
 
     if (result.success) {
       setMessage("Saved Successfully!");
-      setTimeout(() => navigate("/"), setMessage(false), 1200);
+      setTimeout(() => navigate("/app/home"), setMessage(false), 1200);
     } else {
       setMessage(result.error || "Something went wrong");
     }

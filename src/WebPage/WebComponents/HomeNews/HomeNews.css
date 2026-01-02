@@ -1,0 +1,149 @@
+.HomeNews {
+  padding: 6rem 0;
+}
+
+.HomeNews h4 {
+  font-size: 15px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 400;
+  color: #00dc82;
+  text-transform: uppercase;
+  position: relative;
+  letter-spacing: 6px;
+  margin-bottom: 5px;
+}
+
+.HomeNews h2 {
+  font-size: 46px;
+  font-family: "Gilda Display", serif;
+  font-weight: 400;
+  color: #fff;
+  position: relative;
+  margin-bottom: 20px;
+  line-height: 1.25em;
+}
+
+.HomeNews-container {
+  width: 100%;
+}
+
+.HomeNews-box-item .date {
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.HomeNews-box-item .date span {
+  font-family: "Barlow Condensed", sans-serif;
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #fff;
+}
+
+.HomeNews-box-item .date i {
+  font-family: "Barlow Condensed", sans-serif;
+  display: block;
+  font-size: 24px;
+  font-style: normal;
+  color: #fff;
+}
+
+.HomeNews-box-item .date a {
+  text-decoration: none;
+}
+
+.HomeNews-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.HomeNews-box-item-head {
+  position: relative;
+}
+
+.HomeNews-box-item {
+  position: relative;
+  height: 100%;
+}
+
+.HomeNews-box-item img {
+  width: 100%;
+  aspect-ratio: 5/4;
+  object-fit: cover;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  filter: brightness(100%);
+}
+
+.HomeNews-box:hover img {
+  -webkit-filter: none;
+  filter: none;
+  -webkit-transform: scale(1.09, 1.09);
+  transform: scale(1.09, 1.09);
+  -webkit-filter: brightness(75%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.HomeNews-box .con {
+  margin: -135px 20px 90px;
+  padding: 20px;
+  background-color: #2b2b2b !important;
+  border: 1px solid #2b2b2b;
+  border-radius: 0;
+  overflow: hidden;
+  -webkit-transition: 0.2s cubic-bezier(0.3, 0.58, 0.55, 1);
+  transition: 0.2s cubic-bezier(0.3, 0.58, 0.55, 1);
+  bottom: -90px;
+  position: relative;
+}
+
+.HomeNews-box:hover .con {
+  bottom: 0;
+}
+
+.HomeNews-box .con .category {
+  font-family: "Barlow", sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  letter-spacing: 3px;
+}
+
+.HomeNews-box .con .category a:last-child {
+  margin-right: 0;
+}
+
+.HomeNews-box .con h5 a {
+  color: #fff;
+  font-size: 24px;
+  font-family: "Gilda Display", serif;
+  font-weight: 400;
+  margin-bottom: 0px;
+  text-decoration: none;
+}
+
+.HomeNews-box .con .category a {
+  margin-right: 5px;
+  position: relative;
+  color: #00dc82;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 680px) {
+  .HomeNews-box {
+    margin: 0px;
+  }
+}

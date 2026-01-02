@@ -12,7 +12,7 @@ const PinScreen = () => {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/login");
+      navigate("/app/login");
     } else {
       getAccountDetails();
     }
@@ -67,7 +67,7 @@ const PinScreen = () => {
 
       if (data.success) {
         localStorage.setItem("pinVerified", "true");
-        navigate("/");
+        navigate("/app/home");
         setLoading(false)
       } else {
         const newAttempts = attempts + 1;

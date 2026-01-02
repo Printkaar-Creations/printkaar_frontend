@@ -1,0 +1,37 @@
+/* @import "~react-image-gallery/styles/css/image-gallery.css"; */
+
+.HomeCategory {
+    padding: 4rem 0;
+}
+
+.HomeCategory-heading {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.HomeCategory-heading h2 {
+    font-size: 46px;
+    font-family: 'Gilda Display', serif;
+    font-weight: 400;
+    color: #fff;
+    position: relative;
+    margin-bottom: 20px;
+    line-height: 1.25em;
+}
+
+@media only screen and (max-width: 680px) {
+    .HomeCategory-heading h2 {
+        font-size: 35px;
+    }
+    .homeCategory-box{
+        flex-direction: column;
+    }
+    .homeCategory-box-left{
+        width: 100% !important;
+        order: 1;
+    }
+    .homeCategory-box-right{
+        width: 100% !important;
+        order: 2;
+    }
+}

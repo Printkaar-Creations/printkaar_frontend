@@ -16,7 +16,7 @@ const Pnav = () => {
   const navRefs = useRef([]);
 
   useEffect(() => {
-    const links = ["/","/history", "/entry", "/profile"];
+    const links = ["/app/home","/app/history", "/app/entry"];
 
     const current = navRefs.current.find(
       (ref) => ref && ref.dataset.path === location.pathname
@@ -66,9 +66,9 @@ const Pnav = () => {
       <ul>
         <li>
           <NavLink
-            to={"/"}
+            to={"/app/home"}
             className="nav-link"
-            data-path={"/"}
+            data-path={"/app/home"}
             ref={(el) => (navRefs.current[0] = el)}
           >
             <House />
@@ -76,9 +76,9 @@ const Pnav = () => {
         </li>
         <li>
           <NavLink
-            to={"/history"}
+            to={"/app/history"}
             className="nav-link"
-            data-path={"/history"}
+            data-path={"/app/history"}
             ref={(el) => (navRefs.current[1] = el)}
           >
             <ArrowLeftRight />
@@ -86,25 +86,14 @@ const Pnav = () => {
         </li>
         <li>
           <NavLink
-            to={"/entry"}
+            to={"/app/entry"}
             className="nav-link"
-            data-path={"/entry"}
+            data-path={"/app/entry"}
             ref={(el) => (navRefs.current[2] = el)}
           >
             <CopyPlus />
           </NavLink>
         </li>
-        
-        {/* <li>
-          <NavLink
-            to={"/profile"}
-            className="nav-link"
-            data-path={"/profile"}
-            ref={(el) => (navRefs.current[3] = el)}
-          >
-            <User />
-          </NavLink>
-        </li> */}
       </ul>
     </div>
   );

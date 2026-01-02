@@ -1,0 +1,182 @@
+.footer-contact-form h4 {
+  font-size: 26px;
+  font-family: "Gilda Display", serif;
+  font-weight: 400;
+  color: #fff;
+  position: relative;
+  margin-bottom: 20px;
+  line-height: 1.25em;
+  border-bottom: 1px solid #1f5c43;
+}
+.footer-contact-form p {
+  font-size: 15px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 400;
+  color: #00dc82;
+  text-transform: uppercase;
+  position: relative;
+  letter-spacing: 6px;
+  margin-bottom: 10px;
+}
+.contact-form-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.contact-form-box .input-box {
+  min-width: 0;
+  padding: 0 5px;
+}
+.contact-form-box .input-box label {
+  font-size: 13px;
+  font-weight: normal;
+  color: black;
+}
+.input-box label {
+  font-size: 13px;
+  font-weight: normal;
+  color: black;
+}
+
+form .input-box {
+  margin-bottom: 10px;
+  padding: 0 5px;
+}
+form .input-box input {
+  background: #222;
+  color: white;
+  border-color: transparent;
+  border-bottom: 1px solid #4c4c4c;
+  font-size: 14px;
+  border-width: 1px;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: unset;
+  max-width: unset;
+  height: auto;
+  min-height: unset;
+  max-height: unset;
+  display: block;
+  margin: 0;
+  padding: 9px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0px;
+  background-image: unset;
+  line-height: 1.3em;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+form .input-box select {
+  border-color: transparent;
+  border-bottom: 1px solid #4c4c4c;
+  background: #222;
+  color: #7c7c7c;
+  border-radius: 0px;
+  font-size: 14px;
+  border-width: 1px;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: unset;
+  max-width: unset;
+  height: auto;
+  min-height: unset;
+  max-height: unset;
+  display: block;
+  margin: 0;
+  padding: 9px;
+  border-width: 1px;
+  border-style: solid;
+  background-image: unset;
+  line-height: 1.3em;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+form .input-box textarea {
+  background: #222;
+  color: white;
+  border-bottom: 1px solid #4c4c4c;
+  border-color: transparent;
+  border-radius: 0px;
+  font-size: 14px;
+  border-width: 1px;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  display: block;
+  margin: 0;
+  padding: 9px;
+  border-width: 1px;
+  border-style: solid;
+  background-image: unset;
+  line-height: 20px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.contact-form-box-button {
+  min-width: 0;
+  /* flex: 1; */
+  padding: 0 5px;
+}
+.contact-form-box-button button p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.contact-form-box-button button {
+  width: 100%;
+  background-color: #00dc82;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: Roboto;
+  font-weight: 500;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  text-decoration: none;
+  /* width: auto; */
+  min-width: 100px;
+  max-width: unset;
+  height: auto;
+  min-height: unset;
+  max-height: unset;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 15px;
+  border: 0;
+  border-radius: 0px;
+  background-image: unset;
+  line-height: 1.45em;
+  text-align: center;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.contact-form-box-button button p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+@media only screen and (max-width: 680px) {
+  .contact-form-box .input-box {
+    width: 100%;
+  }
+}

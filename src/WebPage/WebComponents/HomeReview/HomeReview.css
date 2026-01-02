@@ -1,0 +1,75 @@
+.HomeReview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  text-align: center;
+}
+
+.HomeReview-box {
+  width: 40%;
+  text-align: left;
+  position: relative;
+}
+.HomeReview-box h6 {
+  font-family: "Barlow Condensed", sans-serif;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 10px;
+}
+
+.HomeReview-box h4 {
+  font-size: 32px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.HomeReview-box .line {
+  width: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+  margin-bottom: 10px;
+}
+
+.author-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  float: left;
+  overflow: hidden;
+  object-fit: cover;
+}
+.author-img img {
+  width: 100%;
+}
+
+.HomeReview-info {
+  display: flex;
+  align-items: center;
+}
+
+.HomeReview-cont {
+  padding-left: 20px;
+}
+
+.HomeReview-cont span {
+  font-size: 12px;
+  color: #fff;
+  line-height: 1em;
+}
+
+@media only screen and (max-width: 680px) {
+  .HomeReview-box {
+    width: 100%;
+    text-align: center;
+  }
+
+  .HomeReview-box .line {
+    width: 100%;
+  }
+  .HomeReview-info {
+    justify-content: center;
+  }
+}

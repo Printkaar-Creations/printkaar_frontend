@@ -1,0 +1,91 @@
+.HomeForm {
+  padding: 6rem 0;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.HomeForm-left {
+  width: 40%;
+}
+
+.HomeForm-left h5 {
+  margin-bottom: 30px;
+}
+
+.HomeForm-right {
+  /* margin-left: 8%; */
+  width: 60%;
+}
+
+.HomeForm-left-call {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.HomeForm-left-call p {
+  color: white;
+  margin: 0;
+}
+.HomeForm-left-call h5 {
+  color: white;
+  margin: 0;
+}
+
+.HomeForm-left-call p a {
+  color: white;
+  margin: 0;
+  text-decoration: none;
+}
+
+.HomeForm-left-call svg {
+  font-size: 50px;
+  margin-right: 10px;
+}
+
+.booking-box {
+  position: relative;
+  background: #1e1e1e;
+  padding: 45px;
+}
+
+.booking-box h6 {
+  font-size: 15px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 400;
+  color: #00dc82;
+  text-transform: uppercase;
+  position: relative;
+  letter-spacing: 6px;
+  margin-bottom: 10px;
+}
+
+.booking-box h4 {
+  font-family: "Gilda Display", serif;
+  font-size: 27px;
+  font-weight: 400;
+  color: #fff;
+  border-bottom: 1px solid #077d4c;
+  padding-bottom: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 0;
+}
+
+@media only screen and (max-width: 680px) {
+  .HomeForm {
+    flex-wrap: wrap;
+  }
+
+  .HomeForm-left,
+  .HomeForm-right {
+    width: 100%;
+  }
+
+  .booking-box {
+    padding: 2rem;
+  }
+}

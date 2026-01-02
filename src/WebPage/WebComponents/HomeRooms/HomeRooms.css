@@ -1,0 +1,256 @@
+.HomeRooms {
+  padding: 6rem 0;
+}
+
+.HomeRooms h4 {
+  font-size: 15px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 400;
+  color: #00dc82;
+  text-transform: uppercase;
+  position: relative;
+  letter-spacing: 6px;
+  margin-bottom: 5px;
+}
+
+.HomeRooms h2 {
+  font-size: 46px;
+  font-family: "Gilda Display", serif;
+  font-weight: 400;
+  color: #fff;
+  position: relative;
+  margin-bottom: 20px;
+  line-height: 1.25em;
+}
+
+.HomeRooms p {
+  font-family: "Barlow", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+}
+
+.HomeRooms-boxes {
+  /* display: grid;
+    grid-template-columns: repeat(3, 1fr); */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* RoomCard */
+
+.RoomCard {
+  width: 33.3%;
+  
+}
+
+.RoomCard:nth-child(4),
+.RoomCard:nth-child(5) {
+  width: 50%;
+}
+.RoomCard:nth-child(4) img,
+.RoomCard:nth-child(5) img {
+  height: 300px;
+}
+
+.RoomCard {
+  padding: 0px 15px;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+.RoomCard-box:hover .RoomCard-con {
+  bottom: 0;
+}
+
+.RoomCard-box {
+  position: relative;
+  overflow: hidden;
+  /* margin-bottom: 30px; */
+  cursor: pointer;
+  height: 100%;
+}
+
+.RoomCard img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  object-fit: cover;
+}
+
+.RoomCard-image {
+  position: relative;
+  height: 100%;
+}
+
+.RoomCard .RoomCard-con {
+  padding: 20px;
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: left;
+  z-index: 20;
+  height: auto;
+  box-sizing: border-box;
+  background: -moz-linear-gradient(
+    top,
+    transparent 0,
+    rgba(0, 0, 0, 0.1) 2%,
+    rgba(0, 0, 0, 0.75) 90%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    transparent 0,
+    rgba(0, 0, 0, 0.01) 2%,
+    rgba(0, 0, 0, 0.75) 90%
+  );
+  background: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgba(0, 0, 0, 0.01) 2%,
+    rgba(0, 0, 0, 0.75) 90%
+  );
+}
+
+.RoomCard-con h6 {
+  position: relative;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Barlow Condensed", sans-serif;
+  display: inline;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 400;
+  line-height: 1.25em;
+}
+.RoomCard-con h5 {
+  position: relative;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: "Gilda Display", serif;
+  line-height: 1.25em;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.RoomCard-con-facilities {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.RoomCard-box span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  writing-mode: vertical-rl;
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  text-orientation: mixed;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  background: transparent;
+  border: 1px solid rgb(255 255 255 / 76%);
+  font-family: "Barlow Condensed", sans-serif;
+  padding: 10px 3px;
+  line-height: 1.5em;
+}
+.RoomCard-box span p {
+  margin: 0;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.75em;
+  color: rgb(255 255 255 / 76%);
+  /* margin-bottom: 20px; */
+}
+
+.RoomCard-con-line {
+  text-align: center;
+  height: 2px;
+  width: 60px;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  margin: auto 0 15px;
+}
+
+.RoomCard-box:hover .RoomCard-con-line {
+  width: 100%;
+  transition-property: all;
+  transition-duration: 0.8s;
+  transition-timing-function: ease-in-out;
+}
+
+.RoomCard-con-facilities ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.RoomCard-con-facilities ul li {
+  display: flex;
+  margin: 0;
+}
+.RoomCard-con-facilities ul li svg {
+  font-size: 8px;
+  margin-right: 5px;
+}
+
+.RoomCard-con-button p {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  height: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  /* -webkit-line-clamp: 1; */
+  -webkit-box-orient: vertical;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  display: inline;
+}
+.RoomCard-con-button svg {
+  font-size: 8px;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 680px) {
+  .RoomCard {
+    width: 100%;
+  }
+  .RoomCard:nth-child(4),
+  .RoomCard:nth-child(5) {
+    width: 100%;
+  }
+  .RoomCard:nth-child(4) img,
+  .RoomCard:nth-child(5) img {
+    height: 100%;
+  }
+  .HomeRooms h2 {
+    font-size: 35px;
+  }
+}

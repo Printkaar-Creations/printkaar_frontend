@@ -1,0 +1,98 @@
+.Home1 {
+  background-color: #222;
+  color: white;
+  overflow: hidden;
+}
+
+/* .Home-box{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+} */
+
+.Home-box {
+  /* padding-top: 2rem; */
+  background-color: #87878721;
+  width: 100%;
+}
+
+.Home1-detail,
+.Home1-rooms-suits,
+.Home1-services,
+.Home1-video-promote-box,
+.Home1-Facilities,
+.Home1-review-box,
+.Home1-category,
+.Home1-news,
+.Home1-contact-box,
+.Home1-contact-detail-box {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Home1-rooms {
+  background: #1e1e1e;
+}
+
+.Home1-video-promote,
+.Home1-review,
+.Home1-contact {
+  /* height: 500px; */
+  background-image: url(../../Assets/logo08.png);
+  background-attachment: fixed;
+  object-fit: cover;
+  background-size: cover;
+  background-blend-mode: color;
+  position: relative;
+  background-position: center;
+}
+.Home1-video-promote:before,
+.Home1-review:before,
+.Home1-contact:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    display: inline-block;
+    opacity: 0.9;
+    background-image: linear-gradient(0deg, #00000091 0%, #00000091 100%);  
+}
+.Home1-contact:before {
+  opacity: 0.3;
+}
+
+.Home1-contact-detail {
+  background-color: white;
+  color: black;
+}
+
+@media screen and (min-width: 1200px) {
+  .Home1-detail,
+  .Home1-rooms-suits,
+  .Home1-services,
+  .Home1-video-promote-box,
+  .Home1-Facilities,
+  .Home1-review-box,
+  .Home1-category,
+  .Home1-news,
+  .Home1-contact-box,
+  .Home1-contact-detail-box {
+    max-width: 1180px;
+  }
+}
+
+/* Fix slick spacing */
+.slick-slide {
+  padding: 0 15px;
+}
+
+.slick-list {
+  margin: 0 -15px;
+}

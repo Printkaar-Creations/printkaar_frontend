@@ -292,7 +292,7 @@ const Card = ({ data, openSell, setOpenSell, purchases, loggedInUserId, getAllEn
                         {/* OWNER — EDIT */}
                         <button
                             className="accept"
-                            onClick={() => (navigate("/entry", { state: data._id }))}
+                            onClick={() => (navigate("/app/entry", { state: data._id }))}
                         >
                             <Pen />
                         </button>
