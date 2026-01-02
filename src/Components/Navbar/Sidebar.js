@@ -24,7 +24,7 @@ const Sidebar = ({ sideactive, sideRef, handleCloseSidebar, userDetail }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/app/login");
   };
 
   return (

@@ -44,7 +44,7 @@ const Login = () => {
       // Save token
       localStorage.setItem("token", data.authToken);
       setLoading(false)
-      navigate("/pin");
+      navigate("/app/pin");
     } catch (err) {
       console.error(err);
       setError("Something went wrong.");

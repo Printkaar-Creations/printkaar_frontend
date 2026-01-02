@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/login");
+      navigate("/app/login");
     } else {
       getAllEntries();
       getAllState();
